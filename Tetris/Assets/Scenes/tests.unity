@@ -233,7 +233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 697da54128f93477e999260415f01217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameZone: {fileID: 598628684}
 --- !u!4 &286534305
 Transform:
   m_ObjectHideFlags: 0
@@ -632,6 +631,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   block:
   - {fileID: 7466267928567549587}
+  xo: 0
+  yo: 0
+  deltaX: 0
+  deltaY: 0
+  gameZone: {fileID: 598628684}
+  jBegin: 0
+  iBig: 0
+  jBig: 0
+  count: 0
+  k: 0
+  spawned: 0
 --- !u!4 &1697853904
 Transform:
   m_ObjectHideFlags: 0
@@ -2583,7 +2593,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7466267928567549613}
   - component: {fileID: 7466267928567549586}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Blue_block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
