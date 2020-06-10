@@ -17,6 +17,7 @@ public class Spawner : MonoBehaviour
 	public float			speed;
 	public int				lines;
 	public bool				gameOver;
+	private AudioSource		puted;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class Spawner : MonoBehaviour
 		lines = 0;
 		speed = 1f;
 		gameOver = false;
+		puted = GetComponent<AudioSource>();
     }
 
 	private bool IsSpawnable()
@@ -54,7 +56,7 @@ public class Spawner : MonoBehaviour
 		iBig = 0;
 		count = 0;
 		k = 0;
-		randomTetra = (int)Mathf.Round(Random.Range(-0.5f, 6.5f));
+		randomTetra = (int)Mathf.Round(Random.Range(-0.5f, 0.5f));
 		color = (int)Mathf.Round(Random.Range(-0.5f,3.5f));
 		for (int i = 0; i < 4; i++)
 		{
@@ -209,7 +211,10 @@ public class Spawner : MonoBehaviour
 	private void	DestroyLine(int i)
 	{
 		for (int j = 0; j < 10; j++)
+		{
 			Destroy(GameManager.bigGrid[i, j]);
+			GameManager.bigGrid[i, j] = null;
+		}
 	}
 
 	private void	DownLines(int i)
@@ -230,11 +235,12 @@ public class Spawner : MonoBehaviour
 
 	private int CheckLines()
 	{
-		int	j;
+		int	i, j;
 		int	count;
 
 		count = 0;
-		for (int i = 19; i >= 0; i--)
+		i = 19;
+		while (i >= 0)
 		{
 			j = 0;
 			while (j < 10)
@@ -251,7 +257,9 @@ public class Spawner : MonoBehaviour
 				DestroyLine(i);
 				DownLines(i);
 				count++;
+				i++;
 			}
+			i--;
 		}
 		return (count);
 	}
@@ -283,7 +291,10 @@ public class Spawner : MonoBehaviour
 			if (CanGoDown())
 				MoveDown();
 			else
+			{
 				spawned = false;
+				puted.Play(0);
+			}
 			lastTime = Time.time;
 		}
 		if (Input.GetKeyDown("down"))
