@@ -19,6 +19,8 @@ public class Spawner : MonoBehaviour
 	public bool				gameOver;
 	private AudioSource		puted;
 	private int				down;
+	private bool			left, right;
+	private float			timeLeftRight;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +38,24 @@ public class Spawner : MonoBehaviour
 		gameOver = false;
 		puted = GetComponent<AudioSource>();
 		down = 0;
+		timeLeftRight = Time.time;
     }
+
+	public GameObject[]	GetCurrent()
+	{
+		return (this.current);
+	}
+
+	public void SetMoveLeft(bool value)
+	{
+		this.left = value;
+		this.right = !value;
+	}
+
+	public void StopMove()
+	{
+		this.left = this.right = false;
+	}
 
 	private bool IsSpawnable()
 	{
@@ -108,6 +127,7 @@ public class Spawner : MonoBehaviour
 		}
 		for (int i = 0; i < 4; i++)
 			GameManager.bigGrid[indexCurrent[i, 0], indexCurrent[i, 1]] = current[i];
+		timeLeftRight = Time.time;
 	}
 
 	private void	MoveLeft()
@@ -120,6 +140,7 @@ public class Spawner : MonoBehaviour
 		}
 		for (int i = 0; i < 4; i++)
 			GameManager.bigGrid[indexCurrent[i, 0], indexCurrent[i, 1]] = current[i];
+		timeLeftRight = Time.time;
 	}
 
 	private void	MoveDown()
@@ -282,9 +303,9 @@ public class Spawner : MonoBehaviour
 			speed += 0.1f + 0.25f * check;
 			SpawnTetraminos();
 		}
-		if (Input.GetKeyDown("right") && CanGoRight())
+		if (right && CanGoRight() && Time.time - timeLeftRight >= 0.1f)
 			MoveRight();
-		else if (Input.GetKeyDown("left") && CanGoLeft())
+		else if (left && CanGoLeft() && Time.time - timeLeftRight >= 0.1f)
 			MoveLeft();
 		else if (Input.GetKeyDown("d") && CanRotateRight(current[0].transform.position))
 			RotateRight(current[0].transform.position);
