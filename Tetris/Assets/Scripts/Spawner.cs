@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour
 	public int				lines;
 	public bool				gameOver;
 	private AudioSource		puted;
+	private int				down;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class Spawner : MonoBehaviour
 		speed = 1f;
 		gameOver = false;
 		puted = GetComponent<AudioSource>();
+		down = 0;
     }
 
 	private bool IsSpawnable()
@@ -267,7 +269,7 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		int	check;
+		int		check;
 
 		if (!spawned && !IsSpawnable())
 			gameOver = true;
@@ -286,7 +288,8 @@ public class Spawner : MonoBehaviour
 			MoveLeft();
 		else if (Input.GetKeyDown("d") && CanRotateRight(current[0].transform.position))
 			RotateRight(current[0].transform.position);
-		else if (Time.time - lastTime >= (1.0f / speed))
+		else if (Time.time - lastTime >= (1.0f / speed)
+			|| Time.time - lastTime >= (1.0f / (20f * down)))
 		{
 			if (CanGoDown())
 				MoveDown();
@@ -298,8 +301,8 @@ public class Spawner : MonoBehaviour
 			lastTime = Time.time;
 		}
 		if (Input.GetKeyDown("down"))
-			speed *= 15f;
-		if (Input.GetKeyUp("down"))
-			speed /= 15f;
+			down = 1;
+		else if (Input.GetKeyUp("down"))
+			down = 0;
     }
 }
