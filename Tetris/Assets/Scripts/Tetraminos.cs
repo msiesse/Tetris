@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Tetraminos : MonoBehaviour
 {
-	public static bool[,]	tetra;
+	public static int[,,]	tetra;
     // Start is called before the first frame update
     void Start()
     {
-		tetra = new bool[4,4];
-		for (int i = 0; i < 4; i++)
-		{
-			tetra[0,i] = true;
-		}
+		tetra = new int[7,4,4] {{{1,1,1,1},{0,0,0,0},{0,0,0,0},{0,0,0,0}}
+								, {{1,1,0,0},{1,1,0,0},{0,0,0,0},{0,0,0,0}}
+								, {{1,1,1,0},{0,1,0,0},{0,0,0,0},{0,0,0,0}}
+								, {{0,1,0,0},{0,1,0,0},{1,1,0,0},{0,0,0,0}}
+								, {{1,0,0,0},{1,0,0,0},{1,1,0,0},{0,0,0,0}}
+								, {{1,0,0,0},{1,1,0,0},{0,1,0,0},{0,0,0,0}}
+								, {{0,1,0,0},{1,1,0,0},{1,0,0,0},{0,0,0,0}}};
     }
 
     // Update is called once per frame
