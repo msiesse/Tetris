@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: fd5a7335153be46da8daed99705d3d9c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Adobe Hebrew
+  fontNames:
+  - Adobe Hebrew
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 44834134ae88f4321823891112db6259, type: 3}
+  - {fileID: 12800000, guid: 9c177e4847166483eaec9bda06f6747e, type: 3}
+  - {fileID: 12800000, guid: d919b84f6f8db43a4b8fd957afeca2a3, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

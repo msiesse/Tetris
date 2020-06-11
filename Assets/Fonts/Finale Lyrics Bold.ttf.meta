@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: bcdae40b06c004b65bd3efcb412593fd
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Finale Lyrics
+  fontNames:
+  - Finale Lyrics
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 0cec421328a6d4135adc4dcd86226186, type: 3}
+  - {fileID: 12800000, guid: 96be7f2b619a746afbbc6eea1c7739f1, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
