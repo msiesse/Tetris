@@ -34,3 +34,6 @@ Here you can use the buttons to move the tetramino left/right/down. There is als
 
 Here is a short demo live:<br/>
 <img src="Images/demo.gif" width="300px" ><br/>
+
+## Authors
+* **Martin Siesse** [Msiesse](https://github.com/msiesse)
