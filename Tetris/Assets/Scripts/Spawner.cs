@@ -18,8 +18,8 @@ public class Spawner : MonoBehaviour
 	public int				lines;
 	public bool				gameOver;
 	private AudioSource		puted;
+	private bool			left, right, rotate, pause;
 	private int				down;
-	private bool			left, right;
 	private float			timeLeftRight;
 
     // Start is called before the first frame update
@@ -51,10 +51,28 @@ public class Spawner : MonoBehaviour
 		this.left = value;
 		this.right = !value;
 	}
+	public void SetMoveDown(int value)
+	{
+		this.down = 1;
+	}
+
+	public void	SetRotate(bool value)
+	{
+		this.rotate = value;
+	}
+
+	public void SetPause()
+	{
+		if (!this.pause)
+			this.pause = true;
+		else
+			this.pause = false;
+	}
 
 	public void StopMove()
 	{
-		this.left = this.right = false;
+		this.left = this.right = this.rotate = false;
+		this.down = 0;
 	}
 
 	private bool IsSpawnable()
@@ -91,6 +109,7 @@ public class Spawner : MonoBehaviour
 					GameManager.bigGrid[iBig, jBig + jBegin] = Instantiate(block[color]
 						, new Vector3(xo + deltaX * (jBig + jBegin), yo - deltaY * iBig)
 							, Quaternion.identity);
+					GameManager.bigGrid[iBig, jBig + jBegin].transform.parent = transform;
 					current[count] = GameManager.bigGrid[iBig, jBig + jBegin];
 					indexCurrent[count, 0] = iBig;
 					indexCurrent[count, 1] = jBig + jBegin;
@@ -171,6 +190,7 @@ public class Spawner : MonoBehaviour
 		}
 		for (int i = 0; i < 4; i++)
 			GameManager.bigGrid[indexCurrent[i, 0], indexCurrent[i, 1]] = current[i];
+		rotate = false;
 	}
 
 	private bool	CanRotateRight(Vector3 center)
@@ -296,6 +316,8 @@ public class Spawner : MonoBehaviour
 			gameOver = true;
 		if (gameOver)
 			return;
+		if (pause)
+			return;
 		if (!spawned)
 		{
 			check = CheckLines();
@@ -303,11 +325,11 @@ public class Spawner : MonoBehaviour
 			speed += 0.1f + 0.25f * check;
 			SpawnTetraminos();
 		}
-		if (right && CanGoRight() && Time.time - timeLeftRight >= 0.1f)
+		if (right && CanGoRight() && Time.time - timeLeftRight >= 0.2f)
 			MoveRight();
-		else if (left && CanGoLeft() && Time.time - timeLeftRight >= 0.1f)
+		else if (left && CanGoLeft() && Time.time - timeLeftRight >= 0.2f)
 			MoveLeft();
-		else if (Input.GetKeyDown("d") && CanRotateRight(current[0].transform.position))
+		else if (rotate && CanRotateRight(current[0].transform.position))
 			RotateRight(current[0].transform.position);
 		else if (Time.time - lastTime >= (1.0f / speed)
 			|| Time.time - lastTime >= (1.0f / (20f * down)))
@@ -321,9 +343,5 @@ public class Spawner : MonoBehaviour
 			}
 			lastTime = Time.time;
 		}
-		if (Input.GetKeyDown("down"))
-			down = 1;
-		else if (Input.GetKeyUp("down"))
-			down = 0;
     }
 }
