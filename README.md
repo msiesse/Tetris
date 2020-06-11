@@ -25,12 +25,12 @@ If you just want a direct copy of the game for android: [Click Here](http://www.
 ## Tests
 
 If you start the game. You should get this menu:<br/>
-<img src="Images/MainMenu.png" width="600px" ><br/>
+<img src="Images/MainMenu.png" width="300px" ><br/>
 
 Press play to start the game, you'll get something like this:<br/>
-<img src="Images/Game.png" width="600px" ><br/>
+<img src="Images/Game.png" width="300px" ><br/>
 
 Here you can use the buttons to move the tetramino left/right/down. There is also a specal button to rotate the tetramino.
 
 Here is a short demo live:<br/>
-<img src="Images/demo.gif" width="200px" ><br/>
+<img src="Images/demo.gif" width="300px" ><br/>
