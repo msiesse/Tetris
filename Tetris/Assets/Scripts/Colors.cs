@@ -7,11 +7,20 @@ public class Colors : MonoBehaviour
 {
 	public SpriteRenderer[]	sprites;
 	public Image[]			images;
+	public Text[]			texts;
 	private bool			menu;
 
 	public void		SetMenu(bool value)
 	{
 		this.menu = value;
+		sprites = GetComponentsInChildren<SpriteRenderer>();
+		images = GetComponentsInChildren<Image>();
+		texts = GetComponentsInChildren<Text>();
+	}
+
+	public bool		GetMenu()
+	{
+		return (this.menu);
 	}
 
     // Update is called once per frame
@@ -19,8 +28,6 @@ public class Colors : MonoBehaviour
     {
 		if (menu)
 		{
-			sprites = GetComponentsInChildren<SpriteRenderer>();
-			images = GetComponentsInChildren<Image>();
 			foreach (SpriteRenderer sprite in sprites)
 			{
 				sprite.color = new Color(1,1,1,0.2f);
@@ -29,11 +36,13 @@ public class Colors : MonoBehaviour
 			{
 				image.color = new Color(1,1,1,0.2f);
 			}
+			foreach (Text text in texts)
+			{
+				text.color = new Color(1,1,1,0.2f);
+			}
 		}
 		else
 		{
-			sprites = GetComponentsInChildren<SpriteRenderer>();
-			images = GetComponentsInChildren<Image>();
 			foreach (SpriteRenderer sprite in sprites)
 			{
 				sprite.color = new Color(1,1,1,1);
@@ -41,6 +50,10 @@ public class Colors : MonoBehaviour
 			foreach (Image image in images)
 			{
 				image.color = new Color(1,1,1,1);
+			}
+			foreach (Text text in texts)
+			{
+				text.color = new Color(1,1,1,1);
 			}
 		}
     }

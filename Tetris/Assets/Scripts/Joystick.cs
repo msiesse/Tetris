@@ -37,7 +37,7 @@ public class Joystick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler, I
 		{
 			piece.SetRotate(true);
 		}
-		else if (name == "Pause")
+		else if (name == "Pause" && !objects.GetMenu())
 		{
 			piece.SetPause();
 			if (GetComponent<Image>().sprite == pause)
@@ -45,9 +45,10 @@ public class Joystick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler, I
 			else
 				GetComponent<Image>().sprite = pause;
 		}
-		else
+		else if (name == "Home")
 		{
 			objects.SetMenu(true);
+			piece.SetPause(true);
 		}
 	}
 

@@ -69,6 +69,16 @@ public class Spawner : MonoBehaviour
 			this.pause = false;
 	}
 
+	public void SetPause(bool value)
+	{
+		this.pause = value;
+	}
+
+	public bool	GetPause()
+	{
+		return (this.pause);
+	}
+
 	public void StopMove()
 	{
 		this.left = this.right = this.rotate = false;
