@@ -10,6 +10,7 @@ public class Score : MonoBehaviour
 	private Text			theText;
 	private static float	highscore;
 	private float			score;
+	
     // Start is called before the first frame update
     void Start()
     {

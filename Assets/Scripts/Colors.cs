@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+/*
+** This class will set everything darker except the menu when it will appears
+*/
+
 public class Colors : MonoBehaviour
 {
 	public SpriteRenderer[]	sprites;

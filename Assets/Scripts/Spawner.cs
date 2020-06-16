@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+** This class was supposed to contains only functions for spwaning Tetraminos
+** It appears that it's the main class that control the entire game except for
+** joysticks.
+*/
+
 public class Spawner : MonoBehaviour
 {
 	public GameObject[]		block;
@@ -29,7 +35,7 @@ public class Spawner : MonoBehaviour
 		xo = gameZone.GetComponent<BoxCollider2D>().bounds.min.x;
 		yo = gameZone.GetComponent<BoxCollider2D>().bounds.max.y;
 		deltaX = (gameZone.GetComponent<BoxCollider2D>().bounds.max.x - xo) / 9;
-		deltaY = deltaX/*(yo - gameZone.GetComponent<BoxCollider2D>().bounds.min.y) / 19*/;
+		deltaY = deltaX;
 		current = new GameObject[4];
 		indexCurrent = new int[4, 2];
 		lastTime = Time.time;
@@ -94,6 +100,7 @@ public class Spawner : MonoBehaviour
 		}
 		return (true);
 	}
+	
 	private void SpawnTetraminos()
 	{
 		int	iBig, jBig;
